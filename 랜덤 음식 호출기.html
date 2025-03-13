@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Food Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        img {
+            max-width: 300px;
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Food Generator</h1>
+    <p id="food">Click the button to get a random food!</p>
+    <img id="food-image" src="" alt="Food Image" style="display:none;">
+    <button onclick="getRandomFood()">Generate Food</button>
+
+    <script>
+        function getRandomFood() {
+            const foods = [
+                { name: "Pizza", image: "https://source.unsplash.com/300x200/?pizza" },
+                { name: "Burger", image: "https://source.unsplash.com/300x200/?burger" },
+                { name: "Sushi", image: "https://source.unsplash.com/300x200/?sushi" },
+                { name: "Pasta", image: "https://source.unsplash.com/300x200/?pasta" },
+                { name: "Tacos", image: "https://source.unsplash.com/300x200/?tacos" },
+                { name: "Ramen", image: "https://source.unsplash.com/300x200/?ramen" },
+                { name: "Salad", image: "https://source.unsplash.com/300x200/?salad" },
+                { name: "Steak", image: "https://source.unsplash.com/300x200/?steak" },
+                { name: "Sandwich", image: "https://source.unsplash.com/300x200/?sandwich" },
+                { name: "Dumplings", image: "https://source.unsplash.com/300x200/?dumplings" },
+                { name: "Sushi Roll", image: "https://source.unsplash.com/300x200/?sushi-roll" },
+                { name: "Fried Chicken", image: "https://source.unsplash.com/300x200/?fried-chicken" },
+                { name: "Ice Cream", image: "https://source.unsplash.com/300x200/?ice-cream" },
+                { name: "Donuts", image: "https://source.unsplash.com/300x200/?donuts" },
+                { name: "Pancakes", image: "https://source.unsplash.com/300x200/?pancakes" },
+                { name: "French Fries", image: "https://source.unsplash.com/300x200/?fries" },
+                { name: "Chocolate Cake", image: "https://source.unsplash.com/300x200/?chocolate-cake" },
+                { name: "Hot Dog", image: "https://source.unsplash.com/300x200/?hotdog" },
+                { name: "BBQ Ribs", image: "https://source.unsplash.com/300x200/?bbq" },
+                { name: "Lasagna", image: "https://source.unsplash.com/300x200/?lasagna" },
+                { name: "Samosa", image: "https://source.unsplash.com/300x200/?samosa" },
+                { name: "Biryani", image: "https://source.unsplash.com/300x200/?biryani" },
+                { name: "Gyoza", image: "https://source.unsplash.com/300x200/?gyoza" },
+                { name: "Dim Sum", image: "https://source.unsplash.com/300x200/?dim-sum" },
+                { name: "Churros", image: "https://source.unsplash.com/300x200/?churros" },
+                { name: "Croissant", image: "https://source.unsplash.com/300x200/?croissant" },
+                { name: "Ratatouille", image: "https://source.unsplash.com/300x200/?ratatouille" },
+                { name: "Fajitas", image: "https://source.unsplash.com/300x200/?fajitas" },
+                { name: "Mac and Cheese", image: "https://source.unsplash.com/300x200/?mac-and-cheese" },
+                { name: "Pho", image: "https://source.unsplash.com/300x200/?pho" },
+                { name: "Ceviche", image: "https://source.unsplash.com/300x200/?ceviche" },
+                { name: "Falafel", image: "https://source.unsplash.com/300x200/?falafel" },
+                { name: "Paella", image: "https://source.unsplash.com/300x200/?paella" },
+                { name: "Clam Chowder", image: "https://source.unsplash.com/300x200/?clam-chowder" }
+            ];
+            const randomIndex = Math.floor(Math.random() * foods.length);
+            const selectedFood = foods[randomIndex];
+            document.getElementById("food").innerText = selectedFood.name;
+            document.getElementById("food-image").src = selectedFood.image;
+            document.getElementById("food-image").style.display = "block";
+        }
+    </script>
+</body>
+</html>

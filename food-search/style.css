@@ -1,0 +1,6 @@
+.result-item {
+    transition: transform 0.2s ease-in-out;
+}
+.result-item:hover {
+    transform: scale(1.02);
+}
