@@ -6,4 +6,4 @@ def generate_random_number(min_val, max_val):
     return random.randint(min_val, max_val)
 
 if __name__ == "__main__":
-    print("Random Number:", generate_random_number(1, 100))
+    print("Random Number:", generate_random_number(1, 180))
