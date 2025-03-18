@@ -8,9 +8,12 @@ import threading
 import time
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton
 
-# 🔹 업비트 API 키 설정 (환경 변수 사용)
-ACCESS_KEY = os.getenv("nBD2XzRCOkUspRTFuMTeMdxM6xKNXWv4dqJUd75W")
-SECRET_KEY = os.getenv("SLxfdPTb9nZ67LvGm0BI9Wmmq8fY7IxS1FSLNyQ3")
+# 🔹 업비트 API 키 설정 (직접 할당)
+ACCESS_KEY = "nBD2XzRCOkUspRTFuMTeMdxM6xKNXWv4dqJUd75W"
+SECRET_KEY = "SLxfdPTb9nZ67LvGm0BI9Wmmq8fY7IxS1FSLNyQ3"
+
+print(f"ACCESS_KEY: {ACCESS_KEY}")
+print(f"SECRET_KEY: {SECRET_KEY}")
 
 # 🔹 자동 매매 전략 및 기본 설정
 TRADE_INTERVAL = 60  # 자동매매 주기 (초 단위)
@@ -44,8 +47,16 @@ async def start_auto_trade():
             for market in top_30_markets:
                 ticker = "KRW-" + market
                 current_price = pyupbit.get_current_price(ticker)
-                balance = upbit.get_balance("KRW")
+                try:
+                    balance = upbit.get_balance("KRW")
+                    if balance is None:
+                        raise ValueError("Balance is None")
+                except Exception as e:
+                    print(f"Error retrieving balance: {e}")
+                    balance = 0
+                
                 if current_price is None:
+                    print(f"Skipping {ticker} due to None value. current_price: {current_price}, balance: {balance}")
                     continue
                 buy_price = current_price * (1 - (BUY_THRESHOLD_PERCENT / 100))
                 if balance >= TRADE_AMOUNT and current_price <= buy_price:
