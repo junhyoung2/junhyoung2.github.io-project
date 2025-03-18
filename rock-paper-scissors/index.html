@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보 게임</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>가위바위보 게임</h1>
+        <p>컴퓨터와 대결하세요!</p>
+        <div class="choices">
+            <button class="choice" id="rock">바위</button>
+            <button class="choice" id="paper">보</button>
+            <button class="choice" id="scissors">가위</button>
+        </div>
+        <p id="resultMessage"></p>
+        <p>사용자 선택: <span id="userChoice">-</span></p>
+        <p>컴퓨터 선택: <span id="computerChoice">-</span></p>
+        <button id="restartButton" style="display: none;">다시 시작하기</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
