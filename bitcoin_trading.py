@@ -15,6 +15,8 @@ SECRET_KEY = "SLxfdPTb9nZ67LvGm0BI9Wmmq8fY7IxS1FSLNyQ3"  # 발급받은 Secret K
 TRADE_INTERVAL = 60  # 자동매매 주기 (초 단위)
 TRADE_AMOUNT = 10000  # 매매 금액 (원)
 MAX_TRADE_COUNT = 10  # 최대 매매 횟수
+BUY_THRESHOLD_PERCENT = 5  # 매수 기준: 가격이 현재가 대비 5% 하락시 매수
+SELL_THRESHOLD_PERCENT = 5  # 매도 기준: 가격이 매수가 대비 5% 상승시 매도
 
 # 🔹 Upbit API 초기화
 upbit = pyupbit.Upbit(ACCESS_KEY, SECRET_KEY)
@@ -46,21 +48,38 @@ async def get_top_30_markets():
 
 # 🔹 자동 매매 시작 함수
 def start_auto_trade():
+    loop = asyncio.new_event_loop()  # 새 이벤트 루프 생성
+    asyncio.set_event_loop(loop)  # 생성한 루프를 현재 스레드의 루프에 설정
+    
     while True:
         try:
             # 거래량 상위 30개 종목 가져오기
-            top_30_markets = asyncio.run(get_top_30_markets())
+            top_30_markets = loop.run_until_complete(get_top_30_markets())
             print(f"거래량 상위 30개 종목: {top_30_markets}")
             
             for market in top_30_markets:
-                # 각 종목에 대해 매수/매도 전략 실행
+                # 현재 가격을 가져오는 코드 수정
+                ticker = "KRW-" + market
+                current_price = pyupbit.get_current_price(ticker)  # 현재 가격 추출
                 balance = upbit.get_balance("KRW")
-                if balance >= TRADE_AMOUNT:
+                
+                if current_price is None:
+                    continue
+
+                # 매수 기준: 현재 가격이 매수 기준 대비 n% 하락한 경우
+                buy_price = current_price * (1 - (BUY_THRESHOLD_PERCENT / 100))
+                if balance >= TRADE_AMOUNT and current_price <= buy_price:
                     # 매수 예시: 매수 조건 설정 (예: 시장가 매수)
-                    upbit.buy_market_order("KRW-" + market, TRADE_AMOUNT / len(top_30_markets))
+                    upbit.buy_market_order(ticker, TRADE_AMOUNT / len(top_30_markets))
                     print(f"{market} 매수 주문 실행")
-                else:
-                    print(f"{market} 잔액 부족으로 매수 불가")
+
+                # 매도 기준: 구매 가격에서 n% 상승한 경우
+                sell_price = current_price * (1 + (SELL_THRESHOLD_PERCENT / 100))
+                current_position = upbit.get_balance(ticker)
+                if current_position > 0 and current_price >= sell_price:
+                    # 매도 예시: 매도 조건 설정 (예: 시장가 매도)
+                    upbit.sell_market_order(ticker, current_position)
+                    print(f"{market} 매도 주문 실행")
 
             time.sleep(TRADE_INTERVAL)  # 자동매매 주기마다 대기
         except Exception as e:
