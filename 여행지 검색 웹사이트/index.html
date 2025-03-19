@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>여행지 추천</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>여행지 추천</h1>
+    <input id="search" type="text" placeholder="검색어를 입력하세요">
+    <button id="search-btn">검색</button>
+    <select id="filter">
+      <option value="default">필터 없음</option>
+      <option value="distance">거리순</option>
+      <option value="rating">평점순</option>
+    </select>
+  </header>
+  <main>
+    <div id="results"></div>
+  </main>
+  <footer>
+    <p>&copy; 2025 여행지 추천 서비스. 모든 권리 보유.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
