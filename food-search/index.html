@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>음식 검색</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center p-6">
+    
+    <h2 class="text-3xl font-bold mb-6 text-green-600">🍽 음식 검색</h2>
+    
+    <div class="flex flex-col md:flex-row gap-2 mb-4">
+        <input type="text" id="query" placeholder="검색어 입력"
+            class="border p-3 rounded-lg w-80 focus:outline-none focus:ring-2 focus:ring-green-400">
+        <button onclick="searchFood()"
+            class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg transition">검색</button>
+    </div>
+
+    <!-- 카테고리 필터 -->
+    <div class="mb-6">
+        <label for="category" class="text-gray-700 font-semibold mr-2">카테고리:</label>
+        <select id="category" class="border p-3 rounded-lg">
+            <option value="">전체</option>
+            <option value="한식">한식</option>
+            <option value="중식">중식</option>
+            <option value="일식">일식</option>
+            <option value="양식">양식</option>
+        </select>
+    </div>
+
+    <h3 class="text-xl font-semibold mb-3">최근 검색어</h3>
+    <ul id="recent-searches" class="mb-4"></ul>
+
+    <div id="results" class="w-full max-w-2xl"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

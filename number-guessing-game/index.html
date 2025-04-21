@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자 맞추기 게임</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>숫자 맞추기 게임</h1>
+        <p>설정한 숫자 범위 내에서 정답을 맞춰보세요!</p>
+        <label for="minNumber">최소 숫자:</label>
+        <input type="number" id="minNumber" placeholder="최소 숫자 입력">
+        <label for="maxNumber">최대 숫자:</label>
+        <input type="number" id="maxNumber" placeholder="최대 숫자 입력">
+        <button id="setRangeButton">숫자 범위 설정</button>
+        <p id="rangeMessage"></p>
+        <hr>
+        <input type="number" id="userGuess" placeholder="숫자를 입력하세요" disabled>
+        <button id="guessButton" disabled>확인</button>
+        <p id="resultMessage"></p>
+        <button id="revealAnswerButton" style="display: none;">정답 확인하기</button>
+        <button id="restartButton" style="display: none;">다시 시작하기</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

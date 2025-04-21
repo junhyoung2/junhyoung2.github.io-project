@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Shopping Mall</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">MY SHOP</div>
+            <ul class="nav-links">
+                <li><a href="#home">홈</a></li>
+                <li><a href="#products">베스트</a></li>
+                <li><a href="#sale">특가</a></li>
+                <li><a href="#contact">고객센터</a></li>
+            </ul>
+            <div class="search-bar">
+                <input id="searchInput" type="text" placeholder="검색어를 입력하세요">
+                <button id="searchButton">검색</button>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="filter">
+            <h2>상품 필터</h2>
+            <label for="priceFilter">가격대:</label>
+            <select id="priceFilter">
+                <option value="all">모든 가격</option>
+                <option value="low">₩10,000 - ₩20,000</option>
+                <option value="mid">₩30,000 - ₩50,000</option>
+                <option value="high">₩60,000 이상</option>
+            </select>
+        </section>
+        <section class="banner">
+            <h1>특별 할인 중!</h1>
+            <p>최대 50% 할인 혜택을 받아보세요!</p>
+        </section>
+        <section id="products">
+            <h2>베스트 상품</h2>
+            <div class="product-list">
+                <!-- 기본 상품 리스트 -->
+                <div class="product" data-name="상품1">
+                    <img src="assets/images/sample1.jpg" alt="상품1">
+                    <p>상품 이름1</p>
+                    <p class="price">₩10,000</p>
+                    <button class="add-to-cart">장바구니 추가</button>
+                </div>
+                <div class="product" data-name="상품2">
+                    <img src="assets/images/sample2.jpg" alt="상품2">
+                    <p>상품 이름2</p>
+                    <p class="price">₩20,000</p>
+                    <button class="add-to-cart">장바구니 추가</button>
+                </div>
+            </div>
+            <button id="addProductButton">상품 추가</button>
+        </section>
+        <section id="cart">
+            <h2>장바구니</h2>
+            <ul id="cartList"></ul>
+            <p id="totalPrice">총 합계: ₩0</p>
+        </section>
+        <section id="auth">
+            <h2>로그인/회원가입</h2>
+            <form id="authForm">
+                <label for="username">사용자 이름:</label>
+                <input type="text" id="username" required>
+                <label for="password">비밀번호:</label>
+                <input type="password" id="password" required>
+                <button type="submit">로그인</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 junhyoung Mall</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

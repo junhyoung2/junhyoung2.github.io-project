@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <!-- 문서의 문자 인코딩을 UTF-8로 설정 -->
+    <meta charset="UTF-8" />
+    <!-- 반응형 웹을 위해 뷰포트 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 리셋 CSS 파일 연결 -->
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- 스타일 CSS 파일 연결 -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 페이지 제목 -->
+    <title>Yes24-스파클페이지</title>
+</head>
+
+<body>
+    <main>
+        <!-- 책 이미지 섹션 -->
+        <section id="book">
+            <div class="book-img">
+                <!-- 책의 앞면과 뒷면을 나타내는 요소 -->
+                <div class="page">
+                    <div class="front"></div>
+                    <div class="back"></div>
+                </div>
+                <!-- 책의 옆면을 나타내는 요소 -->
+                <div class="side"></div>
+            </div>
+        </section>
+
+        <!-- 책 상세 정보 섹션 -->
+        <section id="detail">
+            <div class="one">
+                <div>
+                    <!-- 소득공제 정보 -->
+                    <p class="border-box">소득공제</p>
+                    <!-- 책의 부가 설명 -->
+                    <p>창비 청소년 문학-134, 창비청소년문학상 수상작</p>
+                </div>
+                <!-- 책 제목 -->
+                <h1>스파클</h1>
+                <div>
+                    <!-- 저자 정보 -->
+                    <p class="r-border">최현진 저</p>
+                    <!-- 출판사 정보 -->
+                    <p class="r-border">zmf</p>
+                    <!-- 출판일 -->
+                    <p>2023년 08월 14일</p>
+                </div>
+                <div>
+                    <!-- 평점 및 리뷰 정보 -->
+                    <p>★★★★★ 9.9</p>
+                    <p class="border-box">▽</p>
+                    <p class="r-border">회원리뷰(30건)</p>
+                    <!-- 판매지수 -->
+                    <p>판매지수 42,888</p>
+                    <p class="border-box">?</p>
+                    <!-- 카테고리 순위 -->
+                    <p class="r-border">가정 살림 57위</p>
+                    <p>청소년 top100 5주</p>
+                </div>
+            </div>
+
+            <div class="two">
+                <div>
+                    <!-- 구매 혜택 정보 -->
+                    <p class="text-red rect-redius">구매혜택</p>
+                    <p class="text-red text-w">고독한 미식가 젓가락 받침대 세트(포인트 차감)</p>
+                </div>
+                <div>
+                    <!-- 정가 정보 -->
+                    <p>정가</p>
+                    <p>16,800원</p>
+                </div>
+                <div>
+                    <!-- 판매가 정보 -->
+                    <p class="text-w">판매가</p>
+                    <p class="text-red text-big">15,120원<span style="font-size: 1rem; font-weight: 500;">(10%할인)</span>
+                    </p>
+                </div>
+                <div>
+                    <!-- 크레마머니 혜택 -->
+                    <p class="text-w">크레마머니<br>최대혜택가<span class="border-box">?</span></p>
+                    <p class="text-big">13,620원</p>
+                </div>
+                <div>
+                    <!-- 적립 포인트 정보 -->
+                    <p>Yes포인트<span class="border-box">?</span></p>
+                    <p>840원(5% 적립)</p>
+                </div>
+                <div>
+                    <!-- 추가 적립 정보 -->
+                    <p></p>
+                    <p>5만원이상 구매 시 2천원 추가적립<span class="border-box">?</span></p>
+                </div>
+            </div>
+
+            <div class="two">
+                <div>
+                    <!-- 결제 혜택 정보 -->
+                    <p>결제혜택</p>
+                    <p>카드/간편결제 혜택을 확인하세요<span class="border-box">▽</span></p>
+                </div>
+            </div>
+
+            <div class="two">
+                <div>
+                    <!-- 배송 안내 -->
+                    <p>배송안내<span class="border-box">〉</span></p>
+                    <p>서울특별시 영등포구 은행로 11(여의도동, 일신빌딩)</p>
+                </div>
+                <div class="del">
+                    <!-- 배송 옵션 -->
+                    <span>하루배송</span>
+                    <span>19시까지 주문하면 <span style="font-weight: bolder;">내일 (4/22, 화)</span> 도착 예정</span>
+                </div>
+                <!-- 배송비 정보 -->
+                <p>배송비 : 유료(도서 15,000원 이상 무료) <span class="border-box">?</span></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- 책 이미지 클릭 시 뒤집는 애니메이션 -->
+    <script>
+        const book = document.querySelector(".book-img");
+        book.addEventListener("click", () => {
+            book.classList.toggle("flipped");
+        });
+    </script>
+</body>
+
+</html>
